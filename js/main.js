@@ -11,15 +11,28 @@ const randomNumberContainer_El= document.getElementById("random-number-container
 const scoreContainer_El=document.getElementById("score-container");
 //console.log(scoreContainer_El);
 
-const randomIANumbers=[];
-const randomIANumbersLenght=5;
+let randomIANumbers=[];
+let randomIANumbersLenght=5;
 
-const userNumbers=[];
-const userCorrectNumbers=[];
+let userNumbers=[];
+let userCorrectNumbers=[];
+
+/************* ADD EVENT LISTNER *****************/
+/* console.log(generateArrayOfRandomNumber(0, 100, 5)); */
 
 
+play_btn.addEventListener("click", showIANumbers);
 
+function showIANumbers(){
+
+    randomIANumbers= generateArrayOfRandomNumber(0, 100, 5);
+    console.log(randomIANumbers);
+
+    
+}
 /*
+
+console.log()
 
 1)addeventlistner sul bottone : {
     a)genera IAarray numeri random.

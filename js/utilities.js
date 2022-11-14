@@ -1,3 +1,17 @@
+
+/************* FUNZIONE GENERA NUMERI RANDOM *****************/
+/**
+ * esegue un'estrazione casuale di un numero intero compreso fra i valori passati per argomenti(compresi anchessi)
+ * 
+ * @param {number} minNumber è il valore minimo del range entro il quale si desidera estrarre il numero dalla funzione
+ * @param {number} maxNumber è il valore massimo del range entro il quale si desidera estrarre il numero dalla funzione
+ * @returns il valore di returns è compreso fra i valori minNumber e maxNumber  minNumber <=returns <=maxNumber
+ */
+ function randomNumberOfRange(minNumber, maxNumber) {
+    return Math.floor(Math.random() * (maxNumber - minNumber + 1) + minNumber);
+}
+
+
 /************* FUNZIONE GENERA array di numeri random *****************/
 /**
  * 
@@ -28,8 +42,6 @@
         }
     }
     return array;
-
-
 }
 /**** FUNZIONE GENERICA CREAZIONE ELEMENTO  *************************************/
 /**createElement

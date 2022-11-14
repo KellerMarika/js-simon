@@ -35,7 +35,8 @@ function showIANumbers() {
     //recupera elemento contenitore html
     //contenitore numeri random
     const randomNumberContainer_El = document.getElementById("random-number-container");
-
+    //reset
+    randomNumberContainer_El.classList.toggle("d-none", false);
     //crea elementi  figli 
     while (i < randomIANumbers.length) {
 
@@ -45,36 +46,26 @@ function showIANumbers() {
         console.log(randomIANum_El);
 
         //elemento contenitore html.append figli_el
-        randomNumberContainer_El.append(randomIANum_El)
+        randomNumberContainer_El.append(randomIANum_El);
         i++
     }
 
+    //timer
+    setTimeout(userTurn, 5 * 1000);
 
+    function userTurn() {
+        i = 0
+        randomNumberContainer_El.classList.add("d-none"); console.log("dopo 5s")
 
+        while (i < randomIANumbers.length) {
 
-
+            let userNum = prompt("wich number do you remenber?");
+            i++
+        }
+    }
 
 }
 /*
-
-console.log()
-
-1)addeventlistner sul bottone : {
-    a)genera IAarray numeri random.
-    b)recupera elemento genitore html
-    b)crea elementi  figli 
-    c) e figli.append IAarray[x] random creati 
-    d)el genitore.append e figli
-    e)stampa genitore
-
-    // il timeout lo metto dentro alla funzione come ultima istruzione
-
-    f) set timeout funzione userTry 30*1000 
-
-    //ritardata di 30 secondi rispetto alla fine del blocco di codice precedente
-    user try(){
-
-        1)elemento genitore add d-none;
 
         while (i<IAarray.lenght){
             const userNum=prompt "inserisci uno dei numeri visti in precedenza"

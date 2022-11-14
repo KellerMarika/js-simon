@@ -2,33 +2,58 @@
 /************* ELEMENTI*****************/
 
 //bottone play
-const play_btn=document.querySelector("[name=play-btn]");
+const play_btn = document.querySelector("[name=play-btn]");
 //console.log(play_btn);
-//contenitore numeri random
-const randomNumberContainer_El= document.getElementById("random-number-container");
+/* //contenitore numeri random
+const randomNumberContainer_El = document.getElementById("random-number-container"); */
 //contenitore punteggio finale
-//console.log(randomNumberContainer_El);
-const scoreContainer_El=document.getElementById("score-container");
+const scoreContainer_El = document.getElementById("score-container");
 //console.log(scoreContainer_El);
 
-let randomIANumbers=[];
-let randomIANumbersLenght=5;
+let randomIANumbers = [];
+let randomIANumbersLenght = 5;
 
-let userNumbers=[];
-let userCorrectNumbers=[];
+let userNumbers = [];
+let userCorrectNumbers = [];
+
+let i = 0
+let ii = 0
 
 /************* ADD EVENT LISTNER *****************/
 /* console.log(generateArrayOfRandomNumber(0, 100, 5)); */
 
-
+//addeventlistner sul bottone :
 play_btn.addEventListener("click", showIANumbers);
 
-function showIANumbers(){
 
-    randomIANumbers= generateArrayOfRandomNumber(0, 100, 5);
+
+function showIANumbers() {
+    //genera IAarray numeri random.
+    randomIANumbers = generateArrayOfRandomNumber(0, 100, 5);
     console.log(randomIANumbers);
 
-    
+    //recupera elemento contenitore html
+    //contenitore numeri random
+    const randomNumberContainer_El = document.getElementById("random-number-container");
+
+    //crea elementi  figli 
+    while (i < randomIANumbers.length) {
+
+        // figli.append IAarray[x] random creati 
+        let randomIANum_El = createElement("span", "IA-random-number", "px-5");
+        randomIANum_El.append(randomIANumbers[i]);
+        console.log(randomIANum_El);
+
+        //elemento contenitore html.append figli_el
+        randomNumberContainer_El.append(randomIANum_El)
+        i++
+    }
+
+
+
+
+
+
 }
 /*
 

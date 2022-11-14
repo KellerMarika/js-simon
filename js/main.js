@@ -43,7 +43,7 @@ function showIANumbers() {
         // figli.append IAarray[x] random creati 
         let randomIANum_El = createElement("span", "IA-random-number", "px-5");
         randomIANum_El.append(randomIANumbers[i]);
-        console.log(randomIANum_El);
+        //console.log(randomIANum_El);
 
         //elemento contenitore html.append figli_el
         randomNumberContainer_El.append(randomIANum_El);
@@ -57,9 +57,9 @@ function showIANumbers() {
 
         //nacondo i numeri dell IA
         randomNumberContainer_El.classList.add("d-none"); console.log("dopo 5s");
-
+        
         //controllo che l'array sia  composto da 5 valori
-        while (userNumbers.length < randomIANumbers.length) {
+        for (i=0; userNumbers.length < randomIANumbers.length; i++) {
 
             let userNum = prompt("wich number do you remenber?");
 
@@ -73,15 +73,22 @@ function showIANumbers() {
 
             } else {
                 userNumbers.push(+userNum);
-                //console.log("userNum=", userNum);
-                //console.log(userNumbers);
+                console.log("userNum=", userNum);
+
+                //controllo sul valore
+                if (checkElement(randomIANumbers, userNumbers[i]) === true) {
+
+                    //raccolgo i valori corretti dell'utente
+                    userCorrectNumbers.push(userNumbers[i]);
+
+                    console.log(userNumbers, "utente");
+                    console.log(userCorrectNumbers, "corretti");
+                }
             }
         }
 
-        console.log(userNumbers, "fora");
-
     }
-   
+
 }
 
 

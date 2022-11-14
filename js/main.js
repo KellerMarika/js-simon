@@ -3,21 +3,20 @@
 
 //bottone play
 const play_btn = document.querySelector("[name=play-btn]");
-//console.log(play_btn);
-/* //contenitore numeri random
-const randomNumberContainer_El = document.getElementById("random-number-container"); */
-//contenitore punteggio finale
-const scoreContainer_El = document.getElementById("score-container");
-//console.log(scoreContainer_El);
 
+//contenitore 
+const mainContainer_El = document.getElementById("main-container");
+//numeri generati dall'IA
 let randomIANumbers = [];
+//lunghezza dell'array dei numeri random dell'IA
 let randomIANumbersLenght = 5;
 
+//numeri inseriti dall'utente
 let userNumbers = [];
+//numeri corretti
 let userCorrectNumbers = [];
 
 let i = 0
-let ii = 0
 
 /************* ADD EVENT LISTNER *****************/
 /* console.log(generateArrayOfRandomNumber(0, 100, 5)); */
@@ -53,13 +52,14 @@ function showIANumbers() {
     //timer
     setTimeout(userTurn, 5 * 1000);
 
+
     function userTurn() {
 
         //nacondo i numeri dell IA
         randomNumberContainer_El.classList.add("d-none"); console.log("dopo 5s");
-        
+
         //controllo che l'array sia  composto da 5 valori
-        for (i=0; userNumbers.length < randomIANumbers.length; i++) {
+        for (i = 0; userNumbers.length < randomIANumbers.length; i++) {
 
             let userNum = prompt("wich number do you remenber?");
 
@@ -86,8 +86,33 @@ function showIANumbers() {
                 }
             }
         }
+        console.log("RETURN", userCorrectNumbers);
+        setTimeout(generateScoreContainer, 2 * 1000);
+        alert("rotella animata");
+
+
+        function generateScoreContainer() {
+
+            const scoreContainer_El = createElement("div", "score-container", "border-1");
+            console.log(scoreContainer_El);
+            const scoreTitle_El = createElement("h2", "title", "result");
+            console.log(scoreTitle_El);
+            const scoreValue_El = createElement("p", "score-subtitle", "fw-bold");
+            console.log(scoreValue_El);
+
+            scoreTitle_El.append("hai fatto schifo");
+            scoreValue_El.append(`you nailed: ${userCorrectNumbers.length} / ${randomIANumbers.length}`);
+            scoreContainer_El.append(scoreTitle_El);
+            scoreContainer_El.append(scoreValue_El);
+            mainContainer_El.append(scoreContainer_El);
+        }
+
 
     }
+
+
+
+
 
 }
 

@@ -54,27 +54,38 @@ function showIANumbers() {
     setTimeout(userTurn, 5 * 1000);
 
     function userTurn() {
-        i = 0
-        randomNumberContainer_El.classList.add("d-none"); console.log("dopo 5s")
 
-        while (i < randomIANumbers.length) {
+        //nacondo i numeri dell IA
+        randomNumberContainer_El.classList.add("d-none"); console.log("dopo 5s");
+
+        //controllo che l'array sia  composto da 5 valori
+        while (userNumbers.length < randomIANumbers.length) {
 
             let userNum = prompt("wich number do you remenber?");
-            i++
+
+            //che siano numeri 
+            if (isNaN(+userNum) || userNum === "") {
+                alert("This is not a Number!");
+
+                //cotrollo che questo numero non sia già stato inserito
+            } else if (checkElement(userNumbers, +userNum) === true) {
+                alert("You have already insert this number. try again!");
+
+            } else {
+                userNumbers.push(+userNum);
+                //console.log("userNum=", userNum);
+                //console.log(userNumbers);
+            }
         }
+
+        console.log(userNumbers, "fora");
+
     }
-
+   
 }
+
+
 /*
-
-        while (i<IAarray.lenght){
-            const userNum=prompt "inserisci uno dei numeri visti in precedenza"
-            validazione valore
-            if (validazione valore=false){
-                alert (ritenta!)
-            }else{
-
-                UserNumbers.push(userNum);
 
                 wile (ii<array.Lenght){
 

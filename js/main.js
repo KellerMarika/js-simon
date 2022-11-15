@@ -33,9 +33,9 @@ function showIANumbers() {
 
     //recupera elemento contenitore html
     //contenitore numeri random
-    const randomNumberContainer_El = document.getElementById("random-number-container");
+    const randomNumbersContainer_El = createElement("div", "IA", "random-numbers-container");
     //reset
-    randomNumberContainer_El.classList.toggle("d-none", false);
+    randomNumbersContainer_El.classList.toggle("d-none", false);
     //crea elementi  figli 
     while (i < randomIANumbers.length) {
 
@@ -45,18 +45,19 @@ function showIANumbers() {
         //console.log(randomIANum_El);
 
         //elemento contenitore html.append figli_el
-        randomNumberContainer_El.append(randomIANum_El);
+        randomNumbersContainer_El.append(randomIANum_El);
+        mainContainer_El.append(randomNumbersContainer_El);
         i++
     }
 
     //timer
-    setTimeout(userTurn, 5 * 1000);
+    setTimeout(userTurn, 30 * 1000);
 
 
     function userTurn() {
 
         //nacondo i numeri dell IA
-        randomNumberContainer_El.classList.add("d-none"); console.log("dopo 5s");
+        randomNumbersContainer_El.classList.add("d-none"); console.log("dopo 5s");
 
         //controllo che l'array sia  composto da 5 valori
         for (i = 0; userNumbers.length < randomIANumbers.length; i++) {
@@ -87,74 +88,51 @@ function showIANumbers() {
             }
         }
         console.log("RETURN", userCorrectNumbers);
-        setTimeout(generateScoreContainer, 2 * 1000);
-        alert("rotella animata");
 
+        const loadingSpinner = document.querySelector(".animated-svg");
+        loadingSpinner.classList.remove("opacity-0");
+
+        setTimeout(generateScoreContainer, 3 * 1000);
 
         function generateScoreContainer() {
+
+            loadingSpinner.classList.add("opacity-0");
 
             const scoreContainer_El = createElement("div", "score-container", "border-1");
             console.log(scoreContainer_El);
             const scoreTitle_El = createElement("h2", "title", "result");
             console.log(scoreTitle_El);
-            const scoreValue_El = createElement("p", "score-subtitle", "fw-bold");
+            const scoreValue_El = createElement("h2", "score-subtitle", "fw-bold");
             console.log(scoreValue_El);
 
-            scoreTitle_El.append("hai fatto schifo");
-            scoreValue_El.append(`you nailed: ${userCorrectNumbers.length} / ${randomIANumbers.length}`);
+
+            if (userCorrectNumbers.length === 0) {
+                scoreTitle_El.append("you are a fool monkey");
+            } else if (userCorrectNumbers.length <= 2) {
+                scoreTitle_El.append("neanderthal brain");
+            } else if (userCorrectNumbers.length === 3) {
+                scoreTitle_El.append("brain level: Italian politician");
+            }
+            else if (userCorrectNumbers.length <= 4) {
+                scoreTitle_El.append("ready for a 3-5 year old \"sapientino\"");
+            }
+            else if (userCorrectNumbers.length <= 5) {
+                scoreTitle_El.append(`WOOOW, too smart!
+                You are ready for the js object lesson!`);
+            }
+
+
+            scoreValue_El.append(`you nailed: ${userCorrectNumbers.length} / ${randomIANumbers.length}:   `);
+
+            i = 0
+            while (i < userCorrectNumbers.length) {
+
+                scoreValue_El.append(`${userCorrectNumbers[i]} `);
+                i++
+            }
             scoreContainer_El.append(scoreTitle_El);
             scoreContainer_El.append(scoreValue_El);
             mainContainer_El.append(scoreContainer_El);
         }
-
-
     }
-
-
-
-
-
 }
-
-
-/*
-
-                wile (ii<array.Lenght){
-
-                    if array.includs(userNumbers[ii]){
-
-                        userCorrectChoice.push(userNumber [ii]); 
-                        
-                    }
-
-                ii++
-                }                
-            }
-            i++
-        }
-
-        //finito il ciclo tiro le somme
-
-        crea elementi figli di score_el ()//3 pezzi
-        append
-        "hai indovinato"+ userCorrectnumber.lenght + "numeri: "//1p
-
-            while (i=userCorrectnumber.lenght){
-            score_El.append( userCorrectnumber[i] + ", ");//1p
-            }
-
-            //se tutto funziona e avanza tempo aggiungere valutazione finale in base alla userCorrectnumber.lenght
-
-
-
-            Visualizzare in pagina 5 numeri casuali. Da lì parte un timer di 30 secondi.
-Dopo 30 secondi i numeri scompaiono e l’utente deve inserire, uno alla volta, i numeri che ha visto precedentemente, tramite il prompt().
-Dopo che sono stati inseriti i 5 numeri, il software dice quanti e quali dei numeri da indovinare sono stati individuati.
-Consigli del giorno:
-* Pensate prima in italiano.
-* Dividete in piccoli problemi la consegna.
-* Individuate gli elementi di cui avete bisogno per realizzare il programma.
-    }
-
-
-*/

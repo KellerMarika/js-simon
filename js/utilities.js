@@ -73,3 +73,4 @@ function checkElement(array, n) {
         return false
     }
 }
+/* push*/
